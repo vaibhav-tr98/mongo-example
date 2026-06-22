@@ -1,10 +1,13 @@
 const mongoose = require("mongoose");
 
 const dbconnect = async ()=>{
-    await mongoose.connect("mongodb://localhost:27017/College").then((conn)=>{
-        console.log("Connection established")
-        //console.log(conn)
-    })
-}
+    try{
+        const conn = await mongoose.connect("mongodb://localhost:27017/College")
+        console.log("Connection established");
+        
+    } catch (error) {
+        console.error("Connection Failed:", error);
+    }
+};
 
 module.exports = dbconnect;
